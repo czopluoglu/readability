@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN="/b/Kaggle/readability/data/treesetup/bin"
+CMD="/b/Kaggle/readability/data/treesetup/cmd"
+LIB="/b/Kaggle/readability/data/treesetup/lib"
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+MWL=${CMD}/mwl-lookup.perl
+TAGGER=${BIN}/tree-tagger
+PARFILE=${LIB}/ancient-greek.par
+
+$TOKENIZER $* |
+# tagging
+$TAGGER $OPTIONS $PARFILE
+
